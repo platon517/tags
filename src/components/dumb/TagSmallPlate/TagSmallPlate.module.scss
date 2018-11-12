@@ -1,0 +1,63 @@
+@import "../../../styles/constants";
+
+.smallTag{
+  width: auto;
+  height: 2em;
+  display: inline-flex;
+  //border-bottom-right-radius: 3px;
+  //border-top-right-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  margin: 5px;
+  transform-origin: 0 50%;
+  opacity: 0;
+  &.spawned{
+    animation: fade_in .3s forwards ease-out;
+  }
+}
+
+.angle{
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  border-right: 1em solid #a0befb;
+}
+
+.body{
+  display: flex;
+  background-color: #a0befb;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.7em;
+  padding-right: 0.5em;
+}
+
+.hole{
+  display: inline-block;
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: $main_bg;
+  border-radius: 100%;
+  left: 0.8em;
+}
+
+@keyframes fade_in {
+  0%{
+    transform: rotate(10deg);
+    opacity: 0;
+  }
+  90%{
+    transform: rotate(-3deg);
+    opacity: 1;
+  }
+  100%{
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
