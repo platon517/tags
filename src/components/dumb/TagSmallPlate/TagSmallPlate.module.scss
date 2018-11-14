@@ -24,12 +24,12 @@
   height: 0;
   border-top: 1em solid transparent;
   border-bottom: 1em solid transparent;
-  border-right: 1em solid #a0befb;
+  border-right: 1em solid $main_blue;
 }
 
 .body{
   display: flex;
-  background-color: #a0befb;
+  background-color: $main_blue;
   align-self: stretch;
   align-items: center;
   justify-content: center;
