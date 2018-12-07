@@ -1,0 +1,27 @@
+textarea, button {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+}
+
+.zone{
+  width: 100%;
+  display: flex;
+}
+
+.text{
+  flex-grow: 2;
+  border: 1px black solid;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+.send{
+  padding: 0.5em 2em;
+}

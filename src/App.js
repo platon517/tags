@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {PreChatPlate} from "./components/dumb/PreChatPlate/PreChatPlate";
+import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
 
 class App extends Component {
   render() {
@@ -14,8 +15,10 @@ class App extends Component {
         {name: 'nintendo'},
       ]
     };
+
     return (
-      <PreChatPlate {...user1} />
+      //<PreChatPlate {...user1} />
+      <ChatContainer/>
     );
   }
 }

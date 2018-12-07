@@ -1,0 +1,24 @@
+import React from 'react';
+import styles from './MessageContainer.module.scss'
+import {MessageBubble} from "./MessageBubble/MessageBubble";
+import {SmallAvatar} from "./SmallAvatar/SmallAvatar";
+
+export const MessageContainer = props => (
+  <div
+    className={styles.container}
+    style={{
+      alignSelf: props.yours ? 'flex-end' : 'flex-start',
+      alignItems: props.yours ? 'flex-end' : 'flex-start',
+    }}
+  >
+    {
+      props.messages.map(
+        item =>
+          <MessageBubble key={ item.id} >
+            { item.text }
+          </MessageBubble>
+      )
+    }
+    <SmallAvatar/>
+  </div>
+);
