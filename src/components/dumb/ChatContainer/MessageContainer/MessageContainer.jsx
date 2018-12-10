@@ -14,11 +14,11 @@ export const MessageContainer = props => (
     {
       props.messages.map(
         item =>
-          <MessageBubble key={ item.id} >
+          <MessageBubble key={ item.id} yours={ props.yours } >
             { item.text }
           </MessageBubble>
       )
     }
-    <SmallAvatar/>
+    <SmallAvatar yours={ props.yours } />
   </div>
 );

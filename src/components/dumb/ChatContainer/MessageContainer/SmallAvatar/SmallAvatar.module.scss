@@ -1,6 +1,15 @@
+@import "../../../../../styles/constants";
+
 .avatar {
   width: 2em;
   height: 2em;
   border-radius: 50%;
-  background-color: #e595ff;
+}
+
+.self{
+  background-color: $main_blue;
+}
+
+.nonSelf{
+  background-color: $main_pink;
 }

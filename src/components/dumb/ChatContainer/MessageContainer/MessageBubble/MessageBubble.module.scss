@@ -2,11 +2,18 @@
 
 .bubble{
   display: flex;
-  background-color: darken($main_blue, 10%);
   padding: 0.5em;
   border-radius: 0.5em;
   color: white;
   font-size: 1em;
   //max-width: 80%;
   margin-bottom: 0.5em;
+}
+
+.self{
+  background-color: darken($main_blue, 10%);
+}
+
+.nonSelf{
+  background-color: darken($main_pink, 10%);
 }

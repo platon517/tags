@@ -2,13 +2,14 @@
 
 .scrollWrapper{
   overflow-y: scroll;
-  flex-grow: 2;
+  //flex-grow: 2;
+  flex-shrink: 999;
 }
 
 .zone{
   width: 100%;
   //background-color: $main_bg;
-  background: linear-gradient(lighten($main_blue, 5%), $main_bg);
+  //background: linear-gradient(lighten($main_blue, 5%), $main_bg);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
