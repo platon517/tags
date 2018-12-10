@@ -21,12 +21,18 @@ const combineMessagesById = messages => {
 
 export const MessagesZone = props => {
 
+  const wrapper = React.useRef();
+
+  React.useEffect(() => {
+    wrapper.current.scrollTop = wrapper.current.scrollHeight;
+  }, [props.messages]);
+
   const { messages } = props;
 
   const myId = 0;
 
   return (
-    <div className={styles.scrollWrapper}>
+    <div ref={wrapper} className={styles.scrollWrapper}>
       <div className={styles.zone}>
         {
           combineMessagesById(messages).map(

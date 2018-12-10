@@ -12,9 +12,14 @@ export const InputZone = props => {
 
   const changeHandler = e => changeText(e.target.value);
 
-  const test = height => {
+  const heightSetter = height => {
     initialHeightBuild && buttonHeightSet(height);
     initialHeightBuild = false;
+  };
+
+  const sendClickHandler = e => {
+    props.sendMessage(text);
+    changeText('');
   };
 
   return(
@@ -23,10 +28,15 @@ export const InputZone = props => {
         className={styles.text}
         value={text}
         onChange={ changeHandler }
-        onHeightChange={ test }
-        //minRows={2}
+        onHeightChange={ heightSetter }
       />
-      <button style={{height: `${buttonHeight}px`}} className={styles.send}>send</button>
+      <button
+        style={{height: `${buttonHeight}px`}}
+        className={styles.send}
+        onClick={sendClickHandler}
+      >
+        send
+      </button>
     </div>
   );
 };

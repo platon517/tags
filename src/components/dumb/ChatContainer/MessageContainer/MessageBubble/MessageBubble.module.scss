@@ -12,8 +12,34 @@
 
 .self{
   background-color: darken($main_blue, 10%);
+  animation: fade_in_bubble_self forwards ease-in 0.2s;
+  //border-bottom-right-radius: 0;
 }
 
 .nonSelf{
   background-color: darken($main_pink, 10%);
+  animation: fade_in_bubble_nonSelf forwards ease-in 0.2s;
+  //border-bottom-left-radius: 0;
+}
+
+@keyframes fade_in_bubble_self {
+  0%{
+    transform: scale(0.5) translateY(100%) translateX(100%);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1) translateY(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade_in_bubble_nonSelf {
+  0%{
+    transform: scale(0.5) translateY(100%) translateX(-100%);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1) translateY(0) translateY(0);
+    opacity: 1;
+  }
 }
