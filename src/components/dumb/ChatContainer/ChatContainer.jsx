@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ChatContainer.module.scss';
 import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
+import {UpperPlate} from "./UpperPlate/UpperPlate";
 
 export const ChatContainer = props => {
 
@@ -65,6 +66,7 @@ export const ChatContainer = props => {
 
   return(
     <div className={styles.container}>
+      <UpperPlate name={'Lisa Ann'}/>
       <MessagesZone messages={messages}/>
       <InputZone sendMessage={sendMessage}/>
     </div>

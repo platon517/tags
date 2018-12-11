@@ -1,0 +1,28 @@
+@import "../../../../styles/constants";
+
+.plate{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 0.25em;
+  background-color: $main_bg;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  opacity: 0.8;
+  box-sizing: border-box;
+}
+
+.back{
+  position: absolute;
+  top: 0;
+  left: 0.5em;
+  color: #414141;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.name{
+  color: darken($main_blue, 20%);
+  font-size: 1.1em;
+}
