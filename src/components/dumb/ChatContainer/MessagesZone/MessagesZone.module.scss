@@ -2,6 +2,7 @@
 
 .scrollWrapper{
   overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
   //flex-grow: 2;
   flex-shrink: 999;
 }

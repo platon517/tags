@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e10f5e1f-03aa-4568-8e05-f1e6cedf8774" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.jsx" afterPath="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.jsx" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change beforePath="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss" afterPath="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss" />
-      <change beforePath="$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.module.scss" afterPath="$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.module.scss" />
+      <change beforePath="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx" afterPath="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss" afterPath="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,7 +87,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageContainer.module.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessageContainer.module.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageContainer.module.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -95,11 +97,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputZone.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.jsx">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="570">
+              <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessagesZone.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -110,8 +122,8 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="435">
+              <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -125,6 +137,16 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessagesZone.module.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,21 +173,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageBubble.module.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageBubble/MessageBubble.module.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ChatContainer.module.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="105">
+              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -223,19 +235,19 @@
         <option value="$PROJECT_DIR$/src/styles/constants.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/SmallAvatar/SmallAvatar.module.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/SmallAvatar/SmallAvatar.jsx" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss" />
-        <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageBubble/MessageBubble.module.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageContainer.module.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.jsx" />
-        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageContainer.jsx" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/UpperPlate/UpperPlate.jsx" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/UpperPlate/UpperPlate.module.scss" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.jsx" />
         <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.module.scss" />
+        <option value="$PROJECT_DIR$/src/index.css" />
+        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss" />
+        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx" />
       </list>
     </option>
   </component>
@@ -417,7 +429,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39414000" />
+    <option name="totallyTimeSpent" value="40808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -717,14 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="104" lean-forward="true" selection-start-line="5" selection-start-column="104" selection-end-line="5" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -753,14 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -777,28 +773,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessageContainer/MessageBubble/MessageBubble.module.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -810,14 +788,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,16 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/InputZone/InputZone.module.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -872,6 +832,58 @@
         <state relative-caret-position="105">
           <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/ChatContainer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.module.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="7" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dumb/ChatContainer/MessagesZone/MessagesZone.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

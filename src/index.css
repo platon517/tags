@@ -24,3 +24,8 @@ code {
 #root{
   width: 100%;
 }
+
+.statusbar-overlay{
+  background-color: transparent;
+  opacity: 0;
+}

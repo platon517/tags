@@ -5,8 +5,6 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(lighten($main_blue, 5%) 0%, $main_bg 60%);
-  overflow-y: scroll;
   //flex-grow: 2;
-  -webkit-overflow-scrolling:touch;
   justify-content: space-between;
 }
