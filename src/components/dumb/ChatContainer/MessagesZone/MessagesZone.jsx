@@ -24,7 +24,6 @@ export const MessagesZone = props => {
   const wrapper = React.useRef();
 
   const rubberScrollFix = () => {
-    wrapper.current.scrollTop = wrapper.current.scrollHeight;
     (() => {
       const _overlay = wrapper.current;
       let _clientY = null; // remember Y position on touch start
@@ -64,6 +63,7 @@ export const MessagesZone = props => {
   };
 
   React.useEffect(() => {
+    wrapper.current.scrollTop = wrapper.current.scrollHeight;
     rubberScrollFix();
   }, [props.messages]);
 

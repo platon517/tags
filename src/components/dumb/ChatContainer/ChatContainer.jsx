@@ -76,12 +76,13 @@ export const ChatContainer = props => {
   const heightChange = () => {
     if (container.current) {
       const newDelta = Math.abs(container.current.getBoundingClientRect().top);
+      if (dynamicHeightDelta !== newDelta) console.log('new height!');
       setDynamicHeightDelta(newDelta);
     }
   };
 
-  requestAnimationFrame(heightChange); // ios keyboard padding 
-
+  setTimeout(() => requestAnimationFrame(heightChange), 100); // ios keyboard padding
+  
   return(
     <div
       ref={container}
