@@ -23,7 +23,7 @@ export const MessagesZone = props => {
 
   const wrapper = React.useRef();
 
-  React.useEffect(() => {
+  const rubberScrollFix = () => {
     wrapper.current.scrollTop = wrapper.current.scrollHeight;
     (() => {
       const _overlay = wrapper.current;
@@ -61,6 +61,10 @@ export const MessagesZone = props => {
         return _overlay.scrollHeight - _overlay.scrollTop <= _overlay.clientHeight;
       }
     })();
+  };
+
+  React.useEffect(() => {
+    rubberScrollFix();
   }, [props.messages]);
 
   const { messages } = props;

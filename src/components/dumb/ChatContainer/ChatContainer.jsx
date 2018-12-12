@@ -66,7 +66,7 @@ export const ChatContainer = props => {
 
   return(
     <div className={styles.container}>
-      <UpperPlate name={'Lisa Ann'}/>
+      <UpperPlate name={'Marie Curie'}/>
       <MessagesZone messages={messages}/>
       <InputZone sendMessage={sendMessage}/>
     </div>
