@@ -64,8 +64,38 @@ export const ChatContainer = props => {
     );
   };
 
+  const container = React.createRef();
+
+  const [height, setHeight] = React.useState(0);
+  const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
+
+  React.useEffect(() => {
+    setHeight(container.current.getBoundingClientRect().height);
+  }, []);
+
+  const heightChange = () => {
+    if (container.current) {
+      const newDelta = Math.abs(container.current.getBoundingClientRect().top);
+      setDynamicHeightDelta(newDelta);
+    }
+  };
+
+  requestAnimationFrame(heightChange); // ios keyboard padding 
+
   return(
-    <div className={styles.container}>
+    <div
+      ref={container}
+      className={styles.container}
+      style={
+        dynamicHeightDelta ?
+          {
+            height: `${height - dynamicHeightDelta}px`,
+            paddingTop: `${dynamicHeightDelta}px`
+          }
+          :
+          {}
+      }
+    >
       <UpperPlate name={'Marie Curie'}/>
       <MessagesZone messages={messages}/>
       <InputZone sendMessage={sendMessage}/>

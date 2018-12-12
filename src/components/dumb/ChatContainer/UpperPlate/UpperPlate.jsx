@@ -4,7 +4,7 @@ import {SmallAvatar} from "../MessageContainer/SmallAvatar/SmallAvatar";
 
 export const UpperPlate = props => {
   return (
-    <div className={styles.plate}>
+    <div id={'upperPlate'} className={styles.plate}>
       <div className={styles.back}>Back</div>
       <div className={styles.user}>
         <div className={styles.name}>{props.name}</div>
