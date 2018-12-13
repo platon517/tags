@@ -23,6 +23,7 @@ code {
 
 #root{
   width: 100%;
+  user-select: none;
 }
 
 .statusbar-overlay{

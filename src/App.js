@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {PreChatPlate} from "./components/dumb/PreChatPlate/PreChatPlate";
 import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
+import {DynamicHeightContainer} from "./components/dumb/DynamicHeightContainer/DynamicHeightContainer";
 
 class App extends Component {
   render() {
@@ -17,8 +18,12 @@ class App extends Component {
     };
 
     return (
-      //<PreChatPlate {...user1} />
-      <ChatContainer/>
+      <DynamicHeightContainer>
+        {
+          //<PreChatPlate {...user1} />
+          <ChatContainer/>
+        }
+      </DynamicHeightContainer>
     );
   }
 }

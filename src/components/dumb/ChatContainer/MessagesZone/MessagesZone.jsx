@@ -19,7 +19,7 @@ const combineMessagesById = messages => {
   return messagesById;
 };
 
-export const MessagesZone = props => {
+export const MessagesZone = React.memo(props => {
 
   const wrapper = React.useRef();
 
@@ -87,4 +87,4 @@ export const MessagesZone = props => {
       </div>
     </div>
   );
-};
+});

@@ -4,7 +4,7 @@ import Textarea from 'react-textarea-autosize';
 
 let initialHeightBuild = true;
 
-export const InputZone = props => {
+export const InputZone = React.memo(props => {
 
   const [text, changeText] = React.useState('');
 
@@ -18,8 +18,10 @@ export const InputZone = props => {
   };
 
   const sendClickHandler = e => {
-    props.sendMessage(text);
-    changeText('');
+    if ( text.length > 0 ) {
+      props.sendMessage(text);
+      changeText('');
+    }
   };
 
   return(
@@ -39,4 +41,4 @@ export const InputZone = props => {
       </button>
     </div>
   );
-};
+});

@@ -4,7 +4,7 @@ import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
 
-export const ChatContainer = props => {
+export const ChatContainer = React.memo(props => {
 
   const [messages, setMessages] = React.useState(
     [
@@ -64,42 +64,11 @@ export const ChatContainer = props => {
     );
   };
 
-  const container = React.createRef();
-
-  const [height, setHeight] = React.useState(0);
-  const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
-
-  React.useEffect(() => {
-    setHeight(container.current.getBoundingClientRect().height);
-  }, []);
-
-  const heightChange = () => {
-    if (container.current) {
-      const newDelta = Math.abs(container.current.getBoundingClientRect().top);
-      if (dynamicHeightDelta !== newDelta) console.log('new height!');
-      setDynamicHeightDelta(newDelta);
-    }
-  };
-
-  setTimeout(() => requestAnimationFrame(heightChange), 100); // ios keyboard padding
-  
   return(
-    <div
-      ref={container}
-      className={styles.container}
-      style={
-        dynamicHeightDelta ?
-          {
-            height: `${height - dynamicHeightDelta}px`,
-            paddingTop: `${dynamicHeightDelta}px`
-          }
-          :
-          {}
-      }
-    >
+    <div className={styles.container}>
       <UpperPlate name={'Marie Curie'}/>
       <MessagesZone messages={messages}/>
       <InputZone sendMessage={sendMessage}/>
     </div>
   );
-};
+});

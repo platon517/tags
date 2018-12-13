@@ -20,7 +20,7 @@ export const PreChatPlate = props => {
       <div className={styles.tags}>
         <span className={styles.tags_container}>
           {
-            tags.map( (item, index) => <TagSmallPlate {...item} index={index}/> )
+            tags.map( (item, index) => <TagSmallPlate key={index} {...item} index={index}/> )
           }
         </span>
       </div>

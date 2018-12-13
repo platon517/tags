@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './UpperPlate.module.scss';
 import {SmallAvatar} from "../MessageContainer/SmallAvatar/SmallAvatar";
 
-export const UpperPlate = props => {
+export const UpperPlate = React.memo(props => {
   return (
     <div id={'upperPlate'} className={styles.plate}>
-      <div className={styles.back}>Back</div>
+      <button className={styles.back}>Back</button>
       <div className={styles.user}>
         <div className={styles.name}>{props.name}</div>
         <div className={styles.status}>online</div>
@@ -13,4 +13,4 @@ export const UpperPlate = props => {
       <div className={styles.avatar}><SmallAvatar yours={ false } /></div>
     </div>
   );
-};
+});
