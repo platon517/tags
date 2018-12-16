@@ -6,6 +6,7 @@
     "node-sass": "^4.10.0",
     "react": "next",
     "react-dom": "next",
+    "react-input-autosize": "^2.2.1",
     "react-scripts": "2.1.1",
     "react-textarea-autosize": "^7.1.0"
   },

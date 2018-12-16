@@ -15,8 +15,10 @@ export const TagSmallPlate = props => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
 
+  const typeClass = props.type ? styles[props.type] : '';
+
   return(
-    <div className={`${styles.smallTag} ${extraClass}`}>
+    <div className={`${styles.smallTag} ${extraClass} ${typeClass}`}>
       <div className={styles.angle}/>
       <div className={styles.body}>{name}</div>
       <div className={styles.hole}/>

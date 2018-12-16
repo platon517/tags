@@ -11,6 +11,7 @@ export const MessageContainer = props => (
       alignItems: props.yours ? 'flex-end' : 'flex-start',
     }}
   >
+    <SmallAvatar yours={ props.yours } />
     {
       props.messages.map(
         item =>
@@ -19,6 +20,5 @@ export const MessageContainer = props => (
           </MessageBubble>
       )
     }
-    <SmallAvatar yours={ props.yours } />
   </div>
 );

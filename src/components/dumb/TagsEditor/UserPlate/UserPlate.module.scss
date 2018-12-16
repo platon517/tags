@@ -1,0 +1,24 @@
+@import "../../../../styles/constants";
+
+.user{
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.avatar{
+  $size: 5em;
+  width: $size;
+  height: $size;
+  background-color: $main_blue;
+  border-radius: 50%;
+}
+
+.name{
+  color: darken($main_blue, 20%);
+  font-size: 1.2em;
+  margin-top: 0.5em;
+}

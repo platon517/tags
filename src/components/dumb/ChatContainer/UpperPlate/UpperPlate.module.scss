@@ -7,8 +7,6 @@
   position: relative;
   padding: 0.25em;
   background-color: $main_bg;
-  border-bottom-right-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
   opacity: 0.8;
   box-sizing: border-box;
   z-index: 999;
@@ -23,6 +21,7 @@
   align-items: center;
   flex-shrink: 2;
   font-size: 1em;
+  background-color: transparent;
 }
 
 .name{

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {PreChatPlate} from "./components/dumb/PreChatPlate/PreChatPlate";
 import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
 import {DynamicHeightContainer} from "./components/dumb/DynamicHeightContainer/DynamicHeightContainer";
+import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 
 class App extends Component {
   render() {
@@ -21,7 +22,8 @@ class App extends Component {
       <DynamicHeightContainer>
         {
           //<PreChatPlate {...user1} />
-          <ChatContainer/>
+          //<ChatContainer/>
+          <TagsEditor/>
         }
       </DynamicHeightContainer>
     );

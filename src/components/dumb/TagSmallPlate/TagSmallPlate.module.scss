@@ -47,6 +47,17 @@
   left: 0.8em;
 }
 
+.add{
+  $color: darken($main_blue, 15%);
+  .angle{
+    border-right: 1em solid $color;
+  }
+  .body{
+    background-color: $color;
+  }
+  cursor: pointer;
+}
+
 @keyframes fade_in {
   0%{
     transform: rotate(10deg);

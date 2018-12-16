@@ -7,19 +7,19 @@
   color: white;
   font-size: 1em;
   //max-width: 80%;
-  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
 
 .self{
   background-color: darken($main_blue, 10%);
   animation: fade_in_bubble_self forwards ease-in 0.2s;
-  //border-bottom-right-radius: 0;
+  //border-top-right-radius: 0;
 }
 
 .nonSelf{
   background-color: darken($main_pink, 10%);
   animation: fade_in_bubble_nonSelf forwards ease-in 0.2s;
-  //border-bottom-left-radius: 0;
+  //border-top-left-radius: 0;
 }
 
 @keyframes fade_in_bubble_self {

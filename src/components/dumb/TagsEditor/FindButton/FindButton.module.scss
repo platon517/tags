@@ -1,0 +1,17 @@
+@import "../../../../styles/constants";
+
+.find{
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  color: white;
+  background-color: darken($main_blue, 10%);
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  font-weight: 600;
+  box-shadow: 0 0 20px 0 darken($main_blue, 10%);
+  transition: all 0.2s ease-in-out;
+  &.touched{
+    transform: scale(1.2);
+    box-shadow: 0 0 20px -3px darken($main_blue, 10%);
+  }
+}
