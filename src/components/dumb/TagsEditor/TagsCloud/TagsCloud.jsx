@@ -33,6 +33,7 @@ export const TagsCloud = props => {
         addTagUiVisible
         &&
         <div className={styles.addTagContainer}>
+          <div onClick={ addTagUiHide } className={styles.bg}/>
           <div className={styles.addTagContent}>
             <AutosizeInput
               placeholder={'new tag'}

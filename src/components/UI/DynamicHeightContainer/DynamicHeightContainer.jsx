@@ -9,7 +9,7 @@ export const DynamicHeightContainer = props => {
   const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
 
   React.useEffect(() => {
-    setHeight(container.current.getBoundingClientRect().height);
+    setHeight(window.innerHeight);
   }, []);
 
   const heightChange = () => {

@@ -13,21 +13,23 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  &:before{
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.8;
-    top: 0;
-    left: 0;
-    position: absolute;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 9;
 }
 
 .addTagContent{
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +45,7 @@
     overflow: hidden;
     border: none;
     background-color: white;
-    padding: 0.5em;
+    padding: 0.75em;
     border-radius: 0.5em;
     box-sizing: border-box;
     font-size: 1em;

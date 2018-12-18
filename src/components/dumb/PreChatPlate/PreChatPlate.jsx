@@ -3,6 +3,7 @@ import styles from './PreChatPlate.module.scss';
 import {TagSmallPlate} from "../TagSmallPlate/TagSmallPlate";
 import {AvatarCircle} from "./AvatarCircle/AvatarCircle";
 import {ButtonsRow} from "./ButtonsRow/ButtonsRow";
+import {BorderButton} from "../../UI/BorderButton/BorderButton";
 
 export const PreChatPlate = props => {
 
@@ -14,6 +15,7 @@ export const PreChatPlate = props => {
 
   return(
     <div className={`${styles.searchPlate} ${next ? styles.searchPlateNext : ''}`}>
+      <div className={styles.topNav}><BorderButton text={'Back'}/></div>
       <div className={styles.avatar}>
         <AvatarCircle name={name}/>
       </div>

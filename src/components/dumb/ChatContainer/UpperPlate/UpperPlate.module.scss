@@ -12,18 +12,6 @@
   z-index: 999;
 }
 
-.back{
-  color: darken($main_blue, 20%);
-  padding: 0.35em;
-  border: 1px solid darken($main_blue, 20%);
-  border-radius: 0.5em;
-  display: flex;
-  align-items: center;
-  flex-shrink: 2;
-  font-size: 1em;
-  background-color: transparent;
-}
-
 .name{
   color: darken($main_blue, 20%);
   font-size: 1.1em;
