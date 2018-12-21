@@ -6,6 +6,8 @@ let initialHeightBuild = true;
 
 export const InputZone = React.memo(props => {
 
+  const textArea = React.useRef();
+
   const [text, changeText] = React.useState('');
 
   const [buttonHeight, buttonHeightSet] = React.useState(0);
@@ -18,6 +20,7 @@ export const InputZone = React.memo(props => {
   };
 
   const sendClickHandler = e => {
+    textArea.current.focus();
     if ( text.length > 0 ) {
       props.sendMessage(text);
       changeText('');
@@ -27,6 +30,7 @@ export const InputZone = React.memo(props => {
   return(
     <div className={styles.zone}>
       <Textarea
+        inputRef={textArea}
         className={styles.text}
         value={text}
         onChange={ changeHandler }

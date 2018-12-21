@@ -22,8 +22,8 @@ class App extends Component {
       <DynamicHeightContainer>
         {
           //<PreChatPlate {...user1} />
-          //<ChatContainer/>
-          <TagsEditor/>
+          <ChatContainer/>
+          //<TagsEditor/>
         }
       </DynamicHeightContainer>
     );

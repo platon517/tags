@@ -3,7 +3,7 @@ html, body{
   width: 100%;
   position: fixed;
   overflow: hidden;
-  background-color: aliceblue;
+  background-color: black;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -29,6 +29,10 @@ code {
 #root{
   width: 100%;
   user-select: none;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  background-color: aliceblue;
+  overflow: hidden;
 }
 
 .statusbar-overlay{
