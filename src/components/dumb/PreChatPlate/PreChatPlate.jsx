@@ -38,19 +38,22 @@ export const PreChatPlate = props => {
     (loading || !foundUser) ?
       <LoadingPlate/>
       :
-      <div className={`${styles.searchPlate} ${next ? styles.searchPlateNext : ''}`}>
-        <div className={styles.topNav}><BorderButton onClick={ backHandler } text={'Back'}/></div>
-        <div className={styles.avatar}>
-          <AvatarCircle name={foundUser.name}/>
+      <>
+        { next && <LoadingPlate/> }
+        <div className={`${styles.searchPlate} ${next ? styles.searchPlateNext : ''}`}>
+          <div className={styles.topNav}><BorderButton onClick={ backHandler } text={'Back'}/></div>
+          <div className={styles.avatar}>
+            <AvatarCircle name={foundUser.name}/>
+          </div>
+          <div className={styles.tags}>
+            <span className={styles.tags_container}>
+              {
+                foundUser.tags.map( (item, index) => <TagSmallPlate key={index} {...item} index={index}/> )
+              }
+            </span>
+          </div>
+          <ButtonsRow nextHandler={nextHandler} startHandler={ startHandler }/>
         </div>
-        <div className={styles.tags}>
-          <span className={styles.tags_container}>
-            {
-              foundUser.tags.map( (item, index) => <TagSmallPlate key={index} {...item} index={index}/> )
-            }
-          </span>
-        </div>
-        <ButtonsRow nextHandler={nextHandler} startHandler={ startHandler }/>
-      </div>
+      </>
   );
 };

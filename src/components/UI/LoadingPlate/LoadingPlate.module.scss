@@ -17,6 +17,12 @@
   animation: spin infinite ease-in-out 1s;
 }
 
+.backButton{
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+}
+
 @keyframes spin {
   0%{
     transform: rotate(0);
