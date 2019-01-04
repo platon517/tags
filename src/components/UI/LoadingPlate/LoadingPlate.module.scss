@@ -1,0 +1,27 @@
+@import "../../../styles/constants";
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerBg{
+  width: 5em;
+  height: 5em;
+  border: 0.25em solid #e1e1e1;
+  border-top: 0.25em solid $main_blue;
+  border-radius: 100%;
+  animation: spin infinite ease-in-out 1s;
+}
+
+@keyframes spin {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+   transform: rotate(360deg);
+  }
+}

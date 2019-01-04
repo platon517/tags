@@ -6,6 +6,10 @@ let initialHeightBuild = true;
 
 export const InputZone = React.memo(props => {
 
+  React.useEffect(() => {
+    initialHeightBuild = true;
+  }, []);
+
   const textArea = React.useRef();
 
   const [text, changeText] = React.useState('');

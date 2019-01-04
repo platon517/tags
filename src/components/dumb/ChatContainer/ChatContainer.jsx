@@ -3,8 +3,14 @@ import styles from './ChatContainer.module.scss';
 import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
+import {FoundUserContext, WindowContext} from "../../../App";
+import {WINDOWS} from "../../../constants/constants";
 
 export const ChatContainer = React.memo(props => {
+
+  const contextFoundUser = React.useContext(FoundUserContext);
+
+  const foundUser = contextFoundUser.self;
 
   const [messages, setMessages] = React.useState(
     [
@@ -66,7 +72,7 @@ export const ChatContainer = React.memo(props => {
 
   return(
     <div className={styles.container}>
-      <UpperPlate name={'Marie Curie'}/>
+      <UpperPlate name={foundUser.name}/>
       <MessagesZone messages={messages}/>
       <InputZone sendMessage={sendMessage}/>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TagSmallPlate.module.scss';
 
-export const TagSmallPlate = props => {
+export const TagSmallPlate = React.memo(props => {
   const { name, index } = props;
   const [extraClass, setExtraClass] = React.useState('');
 
@@ -24,4 +24,4 @@ export const TagSmallPlate = props => {
       <div className={styles.hole}/>
     </div>
   );
-};
+});
