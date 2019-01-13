@@ -1,11 +1,17 @@
 import React from 'react';
 import styles from './FindButton.module.scss';
-import {WindowContext} from "../../../../App";
+import {SocketContext, UserContext, WindowContext} from "../../../../App";
 import {WINDOWS} from "../../../../constants/constants";
 
 export const FindButton = props => {
 
   const contextWindow = React.useContext(WindowContext);
+
+  const contextUser = React.useContext(UserContext);
+
+  const user = contextUser.self;
+
+  const socket = React.useContext(SocketContext);
 
   const [touched, setTouched] = React.useState(false);
 
@@ -16,6 +22,7 @@ export const FindButton = props => {
   };
 
   const findChat = () => {
+    socket.emit('findChat', { user: user });
     contextWindow.setWindow(WINDOWS.PRE_CHAT);
   };
 

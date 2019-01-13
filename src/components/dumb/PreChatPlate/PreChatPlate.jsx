@@ -5,10 +5,12 @@ import {AvatarCircle} from "./AvatarCircle/AvatarCircle";
 import {ButtonsRow} from "./ButtonsRow/ButtonsRow";
 import {BorderButton} from "../../UI/BorderButton/BorderButton";
 import {WINDOWS} from "../../../constants/constants";
-import {FoundUserContext, WindowContext} from "../../../App";
+import {FoundUserContext, SocketContext, WindowContext} from "../../../App";
 import {LoadingPlate} from "../../UI/LoadingPlate/LoadingPlate";
 
 export const PreChatPlate = props => {
+
+  const socket = React.useContext(SocketContext);
 
   const contextWindow = React.useContext(WindowContext);
 
@@ -22,6 +24,7 @@ export const PreChatPlate = props => {
 
   const startHandler = () => {
     contextWindow.setWindow(WINDOWS.CHAT);
+    socket.emit('startChat', { pair: foundUser });
   };
 
   let [next, setNext] = React.useState(false);
@@ -29,13 +32,13 @@ export const PreChatPlate = props => {
   let [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    //setTimeout(() => setLoading(false), 1000);
   }, []);
 
   const nextHandler = () => setNext(true);
 
   return(
-    (loading || !foundUser) ?
+    (loading && !foundUser) ?
       <LoadingPlate/>
       :
       <>

@@ -4,6 +4,7 @@ import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
 import {DynamicHeightContainer} from "./components/UI/DynamicHeightContainer/DynamicHeightContainer";
 import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
+import io from 'socket.io-client'
 
 export const UserContext = React.createContext({});
 
@@ -11,42 +12,58 @@ export const FoundUserContext = React.createContext({});
 
 export const WindowContext = React.createContext('');
 
+export const SocketContext = React.createContext(null);
+
 const App = () => {
 
   const [window, setWindow] = React.useState('');
 
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState({
+    name: null,
+    avatar: '',
+    tags: []
+  });
 
   const [foundUser, setFoundUser] = React.useState(null);
 
+  const [socket, setSocket] = React.useState(null);
+
   React.useEffect(() => {
     setWindow(WINDOWS.TAGS_EDITOR);
-    setUser({
-      name: 'Пророк Санбой',
-      avatar: '',
-      tags: [
-        {name: 'art'},
-        {name: 'tabletops'},
-        {name: 'netflix'},
-        {name: 'games'},
-        {name: 'nintendo'},
-      ]
-    });
-    setFoundUser({
-      name: 'Marie Curie',
-      avatar: '',
-      tags: [
-        {name: 'science'},
-        {name: 'chemistry'},
-        {name: 'death'},
-      ]
-    });
+    setSocket(io.connect('http://192.168.1.82:8080'));
   }, []);
+
+  socket && socket.on('connect', () => {
+    console.log(socket);
+    updateName(`User ${socket.id.substr(0, 5)}`);
+    socket.on('message', function (msg) {
+      console.log(msg)
+    });
+    socket.on('noUsers', () => {
+      setWindow(WINDOWS.TAGS_EDITOR);
+      alert('No users found.');
+    });
+    socket.on('userFound', res => {
+      const user = res.user;
+      setFoundUser({
+        name: user.name,
+        tags: user.tags,
+        avatar: '',
+      });
+    });
+  });
 
   const updateTags = newTags => {
     setUser({
       ...user,
       tags: newTags
+    });
+  };
+
+  const updateName = newName => {
+    setUser({
+      ...user,
+      name: newName
     })
   };
 
@@ -73,6 +90,7 @@ const App = () => {
 
   const contextUser = {
     self: user,
+    updateName: updateName,
     updateTags: updateTags
   };
 
@@ -87,15 +105,17 @@ const App = () => {
   };
 
   return (
-    <UserContext.Provider value={contextUser}>
-      <WindowContext.Provider value={ contextWindow }>
-        <DynamicHeightContainer>
-          {
-            renderSwitcher()
-          }
-        </DynamicHeightContainer>
-      </WindowContext.Provider>
-    </UserContext.Provider>
+    <SocketContext.Provider value={socket}>
+      <UserContext.Provider value={contextUser}>
+        <WindowContext.Provider value={ contextWindow }>
+          <DynamicHeightContainer>
+            {
+              renderSwitcher()
+            }
+          </DynamicHeightContainer>
+        </WindowContext.Provider>
+      </UserContext.Provider>
+    </SocketContext.Provider>
   );
 };
 

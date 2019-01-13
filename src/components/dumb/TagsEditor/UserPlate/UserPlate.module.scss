@@ -11,7 +11,7 @@
 }
 
 .avatar{
-  $size: 5em;
+  $size: 40vw;
   width: $size;
   height: $size;
   background-color: $main_blue;
@@ -19,9 +19,16 @@
 }
 
 .name{
-  color: darken($main_blue, 20%);
-  font-size: 1.2em;
-  margin-top: 0.5em;
+  input{
+    color: darken($main_blue, 20%);
+    font-size: 1.1em;
+    margin-top: 0.5em;
+    text-align: center;
+    border-radius: 0.5em;
+    background-color: lighten($main_blue, 12%);
+    border: none;
+    padding: 0.25em;
+  }
 }
 
 @keyframes fade_in {
