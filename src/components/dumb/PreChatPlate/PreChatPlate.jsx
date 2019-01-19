@@ -19,6 +19,7 @@ export const PreChatPlate = props => {
   const foundUser = contextFoundUser.self;
 
   const backHandler = () => {
+    socket.emit('cancelSearch');
     contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
   };
 

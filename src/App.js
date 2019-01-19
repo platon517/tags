@@ -19,6 +19,7 @@ const App = () => {
   const [window, setWindow] = React.useState('');
 
   const [user, setUser] = React.useState({
+    id: null,
     name: null,
     avatar: '',
     tags: []
@@ -34,10 +35,10 @@ const App = () => {
   }, []);
 
   socket && socket.on('connect', () => {
-    console.log(socket);
-    updateName(`User ${socket.id.substr(0, 5)}`);
-    socket.on('message', function (msg) {
-      console.log(msg)
+    setUser({
+      ...user,
+      id: socket.id,
+      name: `User ${socket.id.substr(0, 5)}`
     });
     socket.on('noUsers', () => {
       setWindow(WINDOWS.TAGS_EDITOR);
@@ -46,10 +47,16 @@ const App = () => {
     socket.on('userFound', res => {
       const user = res.user;
       setFoundUser({
+        id: user.id,
         name: user.name,
         tags: user.tags,
         avatar: '',
       });
+    });
+    socket.on('endChat', event => {
+      event.msg !== 'null' && alert(event.msg);
+      setWindow(WINDOWS.TAGS_EDITOR);
+      setFoundUser(null);
     });
   });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './MessagesZone.module.scss';
 import {MessageContainer} from "../MessageContainer/MessageContainer";
+import {UserContext} from "../../../../App";
 
 const combineMessagesById = messages => {
   const messagesById = [];
@@ -20,6 +21,10 @@ const combineMessagesById = messages => {
 };
 
 export const MessagesZone = React.memo(props => {
+
+  const contextUser = React.useContext(UserContext);
+
+  const user = contextUser.self;
 
   const wrapper = React.useRef();
 
@@ -69,16 +74,16 @@ export const MessagesZone = React.memo(props => {
 
   const { messages } = props;
 
-  const myId = 0;
+  const myId = user.id;
 
   return (
     <div ref={wrapper} className={styles.scrollWrapper}>
       <div className={styles.zone}>
         {
           combineMessagesById(messages).map(
-            (item, index) =>
+            item =>
               <MessageContainer
-                key={ index }
+                key={ item.id }
                 yours={ item.senderId === myId }
                 messages={ item.messages }
               />

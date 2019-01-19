@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './LoadingPlate.module.scss';
-import {WindowContext} from "../../../App";
+import {SocketContext, WindowContext} from "../../../App";
 import {WINDOWS} from "../../../constants/constants";
 import {BorderButton} from "../../UI/BorderButton/BorderButton";
 
 export const LoadingPlate = () => {
+
+  const socket = React.useContext(SocketContext);
+
   const contextWindow = React.useContext(WindowContext);
 
   const backHandler = () => {
+    socket.emit('cancelSearch');
     contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
   };
 
