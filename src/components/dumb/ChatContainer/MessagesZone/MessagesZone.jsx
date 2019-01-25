@@ -9,6 +9,7 @@ const combineMessagesById = messages => {
   messages.reduce( (nowId, mes) => {
     if (nowId !== mes.senderId) {
       messagesById.push({
+        id: messagesById.length,
         senderId: mes.senderId,
         messages: []
       })

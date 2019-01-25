@@ -20,6 +20,8 @@ export const ChatContainer = React.memo(props => {
 
   const [isWaiting, setIsWaiting] = React.useState(true);
 
+  const [messages, setMessages] = React.useState([]);
+
   /*
   const [messages, setMessages] = React.useState(
     [
@@ -39,33 +41,40 @@ export const ChatContainer = React.memo(props => {
   );
    */
 
-  socket.on('partnerIsReady', () => {
-    setIsWaiting(false);
-  });
+  React.useEffect(() => {
+    if (socket._callbacks['message'] === undefined) {
+      socket.on('message', getMessage);
+    }
+    if (socket._callbacks['partnerIsReady'] === undefined) {
+      socket.on('partnerIsReady', () => {
+        setIsWaiting(false);
+      });
+    }
+  }, []);
 
-  const [messages, setMessages] = React.useState([]);
+  console.log(socket._callbacks);
 
-  socket.on('message', msg => {
-    console.log(msg);
+  const getMessage = msg => {
     setMessages(
-      messages.concat({
+      [...messages, {
         id: msg.id,
         senderId: msg.senderId,
         text: msg.text,
         attachments: []
-      })
+      }]
     );
-  });
+    console.log(msg);
+    console.log(messages);
+  };
 
   const sendMessage = text => {
-    console.log(user);
     setMessages(
-      messages.concat({
+      [...messages, {
         id: messages.length,
         senderId: user.id,
         text: text,
         attachments: []
-      })
+      }]
     );
     socket.emit('message', {
       senderId: user.id,

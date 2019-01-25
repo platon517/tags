@@ -5,6 +5,7 @@ import {DynamicHeightContainer} from "./components/UI/DynamicHeightContainer/Dyn
 import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
+import {Test} from "./components/dumb/Test";
 
 export const UserContext = React.createContext({});
 
@@ -31,34 +32,36 @@ const App = () => {
 
   React.useEffect(() => {
     setWindow(WINDOWS.TAGS_EDITOR);
-    setSocket(io.connect('http://192.168.1.82:8080'));
+    setSocket(io.connect(process.env.REACT_APP_API));
   }, []);
 
-  socket && socket.on('connect', () => {
-    setUser({
-      ...user,
-      id: socket.id,
-      name: `User ${socket.id.substr(0, 5)}`
-    });
-    socket.on('noUsers', () => {
-      setWindow(WINDOWS.TAGS_EDITOR);
-      alert('No users found.');
-    });
-    socket.on('userFound', res => {
-      const user = res.user;
-      setFoundUser({
-        id: user.id,
-        name: user.name,
-        tags: user.tags,
-        avatar: '',
+  if (socket && socket._callbacks['connect'] === undefined) {
+    socket.on('connect', () => {
+      setUser({
+        ...user,
+        id: socket.id,
+        name: `User ${socket.id.substr(0, 5)}`
+      });
+      socket.on('noUsers', () => {
+        setWindow(WINDOWS.TAGS_EDITOR);
+        alert('No users found.');
+      });
+      socket.on('userFound', res => {
+        const user = res.user;
+        setFoundUser({
+          id: user.id,
+          name: user.name,
+          tags: user.tags,
+          avatar: '',
+        });
+      });
+      socket.on('endChat', event => {
+        event.msg !== 'null' && alert(event.msg);
+        setWindow(WINDOWS.TAGS_EDITOR);
+        setFoundUser(null);
       });
     });
-    socket.on('endChat', event => {
-      event.msg !== 'null' && alert(event.msg);
-      setWindow(WINDOWS.TAGS_EDITOR);
-      setFoundUser(null);
-    });
-  });
+  }
 
   const updateTags = newTags => {
     setUser({

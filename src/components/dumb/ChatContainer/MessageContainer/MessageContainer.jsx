@@ -3,7 +3,7 @@ import styles from './MessageContainer.module.scss'
 import {MessageBubble} from "./MessageBubble/MessageBubble";
 import {SmallAvatar} from "./SmallAvatar/SmallAvatar";
 
-export const MessageContainer = props => (
+export const MessageContainer = React.memo(props => (
   <div
     className={styles.container}
     style={{
@@ -14,11 +14,8 @@ export const MessageContainer = props => (
     <SmallAvatar yours={ props.yours } />
     {
       props.messages.map(
-        item =>
-          <MessageBubble key={ item.id} yours={ props.yours } >
-            { item.text }
-          </MessageBubble>
+        item => <MessageBubble key={ item.id } yours={ props.yours } text={ item.text } />
       )
     }
   </div>
-);
+));
