@@ -46,6 +46,7 @@ const App = () => {
         });
         newSocket.on('userFound', res => {
           const user = res.user;
+          console.log(user);
           setFoundUser({
             id: user.id,
             name: user.name,
