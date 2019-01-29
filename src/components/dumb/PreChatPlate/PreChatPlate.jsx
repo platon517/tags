@@ -28,8 +28,6 @@ export const PreChatPlate = props => {
     socket.emit('startChat', { pair: foundUser });
   };
 
-  let [next, setNext] = React.useState(false);
-
   let [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -38,29 +36,25 @@ export const PreChatPlate = props => {
 
   const nextHandler = () => {
     socket.emit('nextSubmission');
-    setNext(true);
   };
 
   return(
     (loading && !foundUser) ?
       <LoadingPlate/>
       :
-      <>
-        { next && <LoadingPlate/> }
-        <div className={`${styles.searchPlate} ${next ? styles.searchPlateNext : ''}`}>
-          <div className={styles.topNav}><BorderButton onClick={ backHandler } text={'Back'}/></div>
-          <div className={styles.avatar}>
-            <AvatarCircle name={foundUser.name}/>
-          </div>
-          <div className={styles.tags}>
+      <div className={`${styles.searchPlate}`}>
+        <div className={styles.topNav}><BorderButton onClick={ backHandler } text={'Back'}/></div>
+        <div className={styles.avatar}>
+          <AvatarCircle name={foundUser.name}/>
+        </div>
+        <div className={styles.tags}>
             <span className={styles.tags_container}>
               {
                 foundUser.tags.map( (item, index) => <TagSmallPlate key={index} {...item} index={index}/> )
               }
             </span>
-          </div>
-          <ButtonsRow nextHandler={nextHandler} startHandler={ startHandler }/>
         </div>
-      </>
+        <ButtonsRow nextHandler={nextHandler} startHandler={ startHandler }/>
+      </div>
   );
 };

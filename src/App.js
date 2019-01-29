@@ -54,15 +54,10 @@ const App = () => {
           });
         });
         newSocket.on('endChat', event => {
-          event.msg !== 'null' && alert(event.msg);
-          setWindow(WINDOWS.TAGS_EDITOR);
+          //event.log !== 'null' && alert(event.log);
+          !event.findNext && setWindow(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
         });
-      });
-      newSocket.on('endChat', event => {
-        //event.msg !== 'null' && alert(event.msg);
-        setWindow(WINDOWS.TAGS_EDITOR);
-        setFoundUser(null);
       });
     }
     setSocket(newSocket);

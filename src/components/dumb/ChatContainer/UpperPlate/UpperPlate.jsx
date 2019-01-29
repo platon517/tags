@@ -3,13 +3,17 @@ import styles from './UpperPlate.module.scss';
 import {SmallAvatar} from "../MessageContainer/SmallAvatar/SmallAvatar";
 import {BorderButton} from "../../../UI/BorderButton/BorderButton";
 import {SocketContext, WindowContext} from "../../../../App";
+import {WINDOWS} from "../../../../constants/constants";
 
 export const UpperPlate = React.memo(props => {
 
   const socket = React.useContext(SocketContext);
 
+  const contextWindow = React.useContext(WindowContext);
+
   const backHandler = () => {
     socket.emit('escapeChat');
+    contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
   };
 
   return (
