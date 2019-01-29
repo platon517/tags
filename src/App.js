@@ -32,36 +32,41 @@ const App = () => {
 
   React.useEffect(() => {
     setWindow(WINDOWS.TAGS_EDITOR);
-    setSocket(io.connect(process.env.REACT_APP_API));
-  }, []);
-
-  if (socket && socket._callbacks['connect'] === undefined) {
-    socket.on('connect', () => {
-      setUser({
-        ...user,
-        id: socket.id,
-        name: `User ${socket.id.substr(0, 5)}`
-      });
-      socket.on('noUsers', () => {
-        setWindow(WINDOWS.TAGS_EDITOR);
-        alert('No users found.');
-      });
-      socket.on('userFound', res => {
-        const user = res.user;
-        setFoundUser({
-          id: user.id,
-          name: user.name,
-          tags: user.tags,
-          avatar: '',
+    const newSocket = io.connect(process.env.REACT_APP_API);
+    if (newSocket) {
+      newSocket.on('connect', () => {
+        setUser({
+          ...user,
+          id: newSocket.id,
+          name: `User ${newSocket.id.substr(0, 5)}`
+        });
+        newSocket.on('noUsers', () => {
+          setWindow(WINDOWS.TAGS_EDITOR);
+          alert('No users found.');
+        });
+        newSocket.on('userFound', res => {
+          const user = res.user;
+          setFoundUser({
+            id: user.id,
+            name: user.name,
+            tags: user.tags,
+            avatar: '',
+          });
+        });
+        newSocket.on('endChat', event => {
+          event.msg !== 'null' && alert(event.msg);
+          setWindow(WINDOWS.TAGS_EDITOR);
+          setFoundUser(null);
         });
       });
-      socket.on('endChat', event => {
+      newSocket.on('endChat', event => {
         //event.msg !== 'null' && alert(event.msg);
         setWindow(WINDOWS.TAGS_EDITOR);
         setFoundUser(null);
       });
-    });
-  }
+    }
+    setSocket(newSocket);
+  }, []);
 
   const updateTags = newTags => {
     setUser({

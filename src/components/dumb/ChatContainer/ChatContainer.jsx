@@ -42,34 +42,26 @@ export const ChatContainer = React.memo(props => {
    */
 
   React.useEffect(() => {
-    if (socket._callbacks['message'] === undefined) {
-      socket.on('message', getMessage);
-    }
-    if (socket._callbacks['partnerIsReady'] === undefined) {
-      socket.on('partnerIsReady', () => {
-        setIsWaiting(false);
-      });
-    }
-  }, []);
-
-  console.log(socket._callbacks);
+    socket.on('message', getMessage);
+    socket.on('partnerIsReady', () => {
+      setIsWaiting(false);
+    });
+  }, [socket]);
 
   const getMessage = msg => {
     setMessages(
-      [...messages, {
+      messages => [...messages, {
         id: msg.id,
         senderId: msg.senderId,
         text: msg.text,
         attachments: []
       }]
     );
-    console.log(msg);
-    console.log(messages);
   };
 
   const sendMessage = text => {
     setMessages(
-      [...messages, {
+      messages => [...messages, {
         id: messages.length,
         senderId: user.id,
         text: text,
