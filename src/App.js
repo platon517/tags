@@ -56,7 +56,7 @@ const App = () => {
         });
       });
       socket.on('endChat', event => {
-        event.msg !== 'null' && alert(event.msg);
+        //event.msg !== 'null' && alert(event.msg);
         setWindow(WINDOWS.TAGS_EDITOR);
         setFoundUser(null);
       });

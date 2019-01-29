@@ -36,7 +36,10 @@ export const PreChatPlate = props => {
     //setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  const nextHandler = () => setNext(true);
+  const nextHandler = () => {
+    socket.emit('nextSubmission');
+    setNext(true);
+  };
 
   return(
     (loading && !foundUser) ?
