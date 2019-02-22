@@ -15,7 +15,9 @@
   width: $size;
   height: $size;
   background-color: $main_blue;
+  //opacity: 0.9;
   border-radius: 50%;
+  border: 0.5em solid lighten($main_blue, 14%);
 }
 
 .name{
@@ -25,7 +27,7 @@
     margin-top: 0.5em;
     text-align: center;
     border-radius: 0.5em;
-    background-color: lighten($main_blue, 12%);
+    background-color: lighten($main_blue, 14%);
     border: none;
     padding: 0.25em;
   }

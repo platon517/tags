@@ -24,17 +24,19 @@
   height: 0;
   border-top: 1em solid transparent;
   border-bottom: 1em solid transparent;
-  border-right: 1em solid $main_blue;
+  border-right: 1em solid darken($main_blue, 8%);
+  overflow: hidden;
 }
 
 .body{
   display: flex;
-  background-color: $main_blue;
+  background-color: darken($main_blue, 8%);
   align-self: stretch;
   align-items: center;
   justify-content: center;
   padding-left: 0.7em;
   padding-right: 0.5em;
+  //border: 4px solid red;
 }
 
 .hole{
@@ -42,7 +44,7 @@
   position: absolute;
   width: 0.5em;
   height: 0.5em;
-  background-color: $main_bg;
+  background-color: lighten($main_blue, 14%);
   border-radius: 100%;
   left: 0.8em;
 }
