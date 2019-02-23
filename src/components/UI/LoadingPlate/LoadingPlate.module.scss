@@ -8,7 +8,30 @@
   align-items: center;
   background-color: lighten($main_blue, 14%);
   &:after {
-
+    content: '';
+    width: 100vw;
+    height: 100vw;
+    background-color: #ff6661;
+    opacity: 0.4;
+    position: absolute;
+    top: -40vw;
+    border-radius: 1em;
+    right: -40vw;
+    z-index: 0;
+    transform: rotate(30deg);
+  }
+  &:before{
+    content: '';
+    width: 110vw;
+    height: 110vw;
+    background-color: #8990ff;
+    opacity: 0.4;
+    position: absolute;
+    bottom: -50vw;
+    border-radius: 100%;
+    left: -20vw;
+    z-index: 0;
+    transform: rotate(30deg);
   }
 }
 
@@ -19,6 +42,7 @@
   border-top: 0.25em solid $main_blue;
   border-radius: 100%;
   animation: spin infinite ease-in-out 1s;
+  z-index: 2;
 }
 
 .backButton{
@@ -32,6 +56,6 @@
     transform: rotate(0);
   }
   100%{
-   transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

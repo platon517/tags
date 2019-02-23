@@ -60,6 +60,7 @@ export const ChatContainer = React.memo(props => {
   };
 
   const sendMessage = text => {
+    if(!text.replace(/ /g,'').length) return false;
     setMessages(
       messages => [...messages, {
         id: messages.length,

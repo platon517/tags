@@ -19,12 +19,13 @@
   flex-grow: 1;
   border: #ff4f4f 1px solid;
   color: #ff4f4f;
+  background-color: transparent;
 }
 
 .button_start{
   flex-grow: 4;
   margin-left: 0.5em;
-  border: $main_blue 2px solid;;
+  border: $main_blue 2px solid;
   //color: darken($main_blue, 0%);
   background-color: $main_blue;
   color: white;

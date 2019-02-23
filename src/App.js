@@ -7,6 +7,16 @@ import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
 import {Test} from "./components/dumb/Test";
 
+import man from '../src/img/svg/man.svg';
+import man_1 from '../src/img/svg/man-1.svg';
+import man_2 from '../src/img/svg/man-2.svg';
+import man_3 from '../src/img/svg/man-3.svg';
+import man_4 from '../src/img/svg/man-4.svg';
+import girl from '../src/img/svg/girl.svg';
+import girl_1 from '../src/img/svg/girl-1.svg';
+import boy from '../src/img/svg/boy.svg';
+import boy_1 from '../src/img/svg/boy-1.svg';
+
 export const UserContext = React.createContext({});
 
 export const FoundUserContext = React.createContext({});
@@ -15,6 +25,12 @@ export const WindowContext = React.createContext('');
 
 export const SocketContext = React.createContext(null);
 
+export const AvatarsContext = React.createContext(null);
+
+const avatars = [man, man_1, man_2, man_3, man_4, girl, girl_1, boy, boy_1];
+
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
 const App = () => {
 
   const [window, setWindow] = React.useState('');
@@ -22,7 +38,7 @@ const App = () => {
   const [user, setUser] = React.useState({
     id: null,
     name: null,
-    avatar: '',
+    avatar: null,
     tags: []
   });
 
@@ -38,7 +54,8 @@ const App = () => {
         setUser({
           ...user,
           id: newSocket.id,
-          name: `User ${newSocket.id.substr(0, 5)}`
+          name: `User ${newSocket.id.substr(0, 5)}`,
+          avatar: getRandomInt(0, avatars.length)
         });
         newSocket.on('noUsers', () => {
           setWindow(WINDOWS.TAGS_EDITOR);
@@ -46,12 +63,11 @@ const App = () => {
         });
         newSocket.on('userFound', res => {
           const user = res.user;
-          console.log(user);
           setFoundUser({
             id: user.id,
             name: user.name,
             tags: user.tags,
-            avatar: '',
+            avatar: user.avatar,
           });
         });
         newSocket.on('endChat', event => {
@@ -59,9 +75,9 @@ const App = () => {
           !event.findNext && setWindow(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
         });
+        setSocket(newSocket);
       });
     }
-    setSocket(newSocket);
   }, []);
 
   const updateTags = newTags => {
@@ -75,6 +91,13 @@ const App = () => {
     setUser({
       ...user,
       name: newName
+    })
+  };
+
+  const updateAvatar = newAvatar => {
+    setUser({
+      ...user,
+      avatar: newAvatar
     })
   };
 
@@ -93,16 +116,21 @@ const App = () => {
           </FoundUserContext.Provider>
         );
       case WINDOWS.TAGS_EDITOR :
-        return <TagsEditor/>;
+        return (
+          <TagsEditor/>
+        );
       default:
-        return <TagsEditor/>
+        return (
+          <TagsEditor/>
+        );
     }
   };
 
   const contextUser = {
     self: user,
     updateName: updateName,
-    updateTags: updateTags
+    updateTags: updateTags,
+    updateAvatar: updateAvatar
   };
 
   const contextFoundUser = {
@@ -120,9 +148,11 @@ const App = () => {
       <UserContext.Provider value={contextUser}>
         <WindowContext.Provider value={ contextWindow }>
           <DynamicHeightContainer>
-            {
-              renderSwitcher()
-            }
+            <AvatarsContext.Provider value={avatars}>
+              {
+                renderSwitcher()
+              }
+            </AvatarsContext.Provider>
           </DynamicHeightContainer>
         </WindowContext.Provider>
       </UserContext.Provider>

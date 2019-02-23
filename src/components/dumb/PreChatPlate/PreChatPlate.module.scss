@@ -3,15 +3,27 @@
 .searchPlate{
   width: 100%;
   height: 100%;
-  background-color: $main_bg;
+  background-color: lighten($main_blue, 14%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: 0px 0px 30px -10px rgba(66, 80, 107, 0.8);
+  //box-shadow: 0px 0px 30px -10px rgba(66, 80, 107, 0.8);
   position: fixed;
   top: 0;
+  &:after{
+    content: '';
+    width: 200vw;
+    height: 200vw;
+    border-radius: 100%;
+    position: absolute;
+    background-color: #ffc28b;
+    opacity: 0.4;
+    z-index: -1;
+    bottom: -115vw;
+    right: -90vw;
+  }
   //transform: rotate(20deg) translateX(-40%) translateY(20%);
 }
 
