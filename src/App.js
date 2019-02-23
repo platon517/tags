@@ -72,7 +72,7 @@ const App = () => {
         });
         newSocket.on('endChat', event => {
           //event.log !== 'null' && alert(event.log);
-          !event.findNext && setWindow(WINDOWS.TAGS_EDITOR);
+          event.findNext ? setWindow(WINDOWS.PRE_CHAT) : setWindow(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
         });
         setSocket(newSocket);
