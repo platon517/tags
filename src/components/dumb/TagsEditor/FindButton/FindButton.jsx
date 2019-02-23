@@ -32,7 +32,7 @@ export const FindButton = props => {
       onTouchStart={ touchedHandler }
       onTouchEnd={ unTouchedHandler }
       onClick={ findChat }
-      disabled={ user.tags.length <= 0 }
+      disabled={ user.tags.length <= 0 || user.name.length <= 0 }
     >
       find chat
     </button>
