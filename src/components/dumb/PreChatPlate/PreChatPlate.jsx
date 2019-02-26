@@ -25,7 +25,6 @@ export const PreChatPlate = props => {
 
   const startHandler = () => {
     contextWindow.setWindow(WINDOWS.CHAT);
-    socket.emit('startChat', { pair: foundUser });
   };
 
   let [loading, setLoading] = React.useState(true);

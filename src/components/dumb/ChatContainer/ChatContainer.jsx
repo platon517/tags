@@ -42,8 +42,10 @@ export const ChatContainer = React.memo(props => {
    */
 
   React.useEffect(() => {
+    socket.emit('startChat', { pair: foundUser });
     socket.on('message', getMessage);
     socket.on('partnerIsReady', () => {
+      console.log('partnerIsReady');
       setIsWaiting(false);
     });
   }, [socket]);
@@ -83,7 +85,7 @@ export const ChatContainer = React.memo(props => {
       <UpperPlate name={foundUser.name}/>
       { isWaiting && <span className={styles.waitLine}>Waiting for partner...</span> }
       <MessagesZone messages={messages}/>
-      <InputZone sendMessage={sendMessage}/>
+      { !isWaiting && <InputZone sendMessage={sendMessage}/> }
     </div>
   );
 });
