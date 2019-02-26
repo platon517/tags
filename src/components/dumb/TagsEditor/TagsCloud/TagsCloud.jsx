@@ -34,8 +34,12 @@ export const TagsCloud = props => {
   const addTagUiHide = () => setAddTagUiVisible(false);
 
   const addNewTag = () => {
-    if (tags.some( tag => tag.name.toLowerCase() === tagInput.toLowerCase() )) return false;
-    contextUser.updateTags([...tags, {name: tagInput}]);
+    if (
+      tags.some( tag => tag.name.toLowerCase() === tagInput.toLowerCase() )
+      ||
+      tagInput.replace(/ /g, '').length <= 0
+    ) return false;
+    contextUser.updateTags([...tags, {name: tagInput.replace(/ +(?= )/g,'')}]);
     addTagUiHide();
   };
 

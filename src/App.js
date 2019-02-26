@@ -51,6 +51,9 @@ const App = () => {
     const newSocket = io.connect(process.env.REACT_APP_API);
     if (newSocket) {
       newSocket.on('connect', () => {
+        window !== WINDOWS.TAGS_EDITOR && setWindow(WINDOWS.TAGS_EDITOR);
+        foundUser !== null && setFoundUser(null);
+        alert(contextFoundUser.self);
         setUser({
           ...user,
           id: newSocket.id,
@@ -102,6 +105,8 @@ const App = () => {
   };
 
   const renderSwitcher = () => {
+    //foundUser && alert(`foundUser: ${foundUser.id}`);
+    //contextFoundUser.self && alert(`context: ${contextFoundUser.self.id}`);
     switch (window) {
       case WINDOWS.PRE_CHAT :
         return (
@@ -142,6 +147,8 @@ const App = () => {
     self: window,
     setWindow: setWindow
   };
+
+  alert(`render alert ${contextFoundUser.self}`);
 
   return (
     <SocketContext.Provider value={socket}>
