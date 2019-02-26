@@ -52,8 +52,7 @@ const App = () => {
     if (newSocket) {
       newSocket.on('connect', () => {
         window !== WINDOWS.TAGS_EDITOR && setWindow(WINDOWS.TAGS_EDITOR);
-        foundUser !== null && setFoundUser(null);
-        alert(contextFoundUser.self);
+        setFoundUser(null);
         setUser({
           ...user,
           id: newSocket.id,
@@ -147,8 +146,6 @@ const App = () => {
     self: window,
     setWindow: setWindow
   };
-
-  alert(`render alert ${contextFoundUser.self}`);
 
   return (
     <SocketContext.Provider value={socket}>
