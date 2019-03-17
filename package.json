@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
     "node-sass": "^4.10.0",
+    "path": "^0.12.7",
     "react": "next",
     "react-dom": "next",
     "react-input-autosize": "^2.2.1",
