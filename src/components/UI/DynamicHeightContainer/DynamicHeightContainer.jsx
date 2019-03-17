@@ -3,14 +3,9 @@ import styles from "./DynamicHeightContainer.module.scss"
 
 export const DynamicHeightContainer = props => {
 
-  const container = React.createRef();
+  const container = React.useRef(null);
 
-  const [height, setHeight] = React.useState(0);
   const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
-
-  React.useEffect(() => {
-    setHeight(window.innerHeight);
-  }, []);
 
   const heightChange = () => {
     if (container.current) {
@@ -27,15 +22,18 @@ export const DynamicHeightContainer = props => {
       ref={container}
       className={styles.container}
       style={
-        dynamicHeightDelta ?
-          {
-            height: `${height - dynamicHeightDelta}px`,
-            paddingTop: `${dynamicHeightDelta}px`
-          }
-          :
-          {}
+        {
+          height: `${window.innerHeight}px`,
+          paddingTop: `${dynamicHeightDelta}px`
+        }
       }
     >
+      <div style={{position: 'absolute', top: 0, left: 0, zIndex: 1000, color: 'black'}}>
+        {`${window.innerHeight}`}
+      </div>
+      <div style={{position: 'absolute', top: 0, right: 0, zIndex: 1000, color: 'black'}}>
+        {`${dynamicHeightDelta}`}
+      </div>
       { props.children }
     </div>
   );

@@ -20,11 +20,11 @@ export const PreChatPlate = props => {
 
   const backHandler = () => {
     socket.emit('cancelSearch');
-    contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
+    contextWindow.setWindowPlate(WINDOWS.TAGS_EDITOR);
   };
 
   const startHandler = () => {
-    contextWindow.setWindow(WINDOWS.CHAT);
+    contextWindow.setWindowPlate(WINDOWS.CHAT);
   };
 
   let [loading, setLoading] = React.useState(true);

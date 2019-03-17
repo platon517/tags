@@ -1,6 +1,8 @@
 @import "../../../styles/constants";
 
 .container{
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -36,13 +38,25 @@
 }
 
 .spinnerBg{
-  width: 5em;
-  height: 5em;
-  border: 0.25em solid #e1e1e1;
-  border-top: 0.25em solid $main_blue;
+  width: 6em;
+  height: 6em;
   border-radius: 100%;
-  animation: spin infinite ease-in-out 1s;
-  z-index: 2;
+  background-color: lighten($main_blue, 14%);
+  position: relative;
+  &:before{
+    display: block;
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    top: 0.25em;
+    left: 0.25em;
+    border: 0.25em solid #e1e1e1;
+    border-top: 0.25em solid $main_blue;
+    border-radius: 100%;
+    animation: spin infinite ease-in-out 1s;
+    z-index: 2;
+    content: '';
+  }
 }
 
 .backButton{

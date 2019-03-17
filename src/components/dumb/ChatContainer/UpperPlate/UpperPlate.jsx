@@ -13,7 +13,7 @@ export const UpperPlate = React.memo(props => {
 
   const backHandler = () => {
     socket.emit('escapeChat');
-    contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
+    contextWindow.setWindowPlate(WINDOWS.TAGS_EDITOR);
   };
 
   return (

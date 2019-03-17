@@ -12,7 +12,7 @@ export const LoadingPlate = () => {
 
   const backHandler = () => {
     socket.emit('cancelSearch');
-    contextWindow.setWindow(WINDOWS.TAGS_EDITOR);
+    contextWindow.setWindowPlate(WINDOWS.TAGS_EDITOR);
   };
 
   return (

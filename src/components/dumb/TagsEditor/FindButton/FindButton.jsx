@@ -23,7 +23,7 @@ export const FindButton = props => {
 
   const findChat = () => {
     socket.emit('findChat', { user: user });
-    contextWindow.setWindow(WINDOWS.PRE_CHAT);
+    contextWindow.setWindowPlate(WINDOWS.PRE_CHAT);
   };
 
   return(

@@ -6,6 +6,8 @@ import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
 import {Test} from "./components/dumb/Test";
+import Div100vh from 'react-div-100vh';
+
 
 import man from '../src/img/svg/man.svg';
 import man_1 from '../src/img/svg/man-1.svg';
@@ -33,7 +35,7 @@ const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min
 
 const App = () => {
 
-  const [window, setWindow] = React.useState('');
+  const [windowPlate, setWindowPlate] = React.useState('');
 
   const [user, setUser] = React.useState({
     id: null,
@@ -47,11 +49,11 @@ const App = () => {
   const [socket, setSocket] = React.useState(null);
 
   React.useEffect(() => {
-    setWindow(WINDOWS.TAGS_EDITOR);
+    setWindowPlate(WINDOWS.TAGS_EDITOR);
     const newSocket = io.connect(process.env.REACT_APP_API);
     if (newSocket) {
       newSocket.on('connect', () => {
-        window !== WINDOWS.TAGS_EDITOR && setWindow(WINDOWS.TAGS_EDITOR);
+        windowPlate !== WINDOWS.TAGS_EDITOR && setWindowPlate(WINDOWS.TAGS_EDITOR);
         setFoundUser(null);
         setUser({
           ...user,
@@ -60,7 +62,7 @@ const App = () => {
           avatar: getRandomInt(0, avatars.length)
         });
         newSocket.on('noUsers', () => {
-          setWindow(WINDOWS.TAGS_EDITOR);
+          setWindowPlate(WINDOWS.TAGS_EDITOR);
           alert('No users found.');
         });
         newSocket.on('userFound', res => {
@@ -74,7 +76,7 @@ const App = () => {
         });
         newSocket.on('endChat', event => {
           //event.log !== 'null' && alert(event.log);
-          event.findNext ? setWindow(WINDOWS.PRE_CHAT) : setWindow(WINDOWS.TAGS_EDITOR);
+          event.findNext ? setWindowPlate(WINDOWS.PRE_CHAT) : setWindowPlate(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
         });
         setSocket(newSocket);
@@ -106,7 +108,7 @@ const App = () => {
   const renderSwitcher = () => {
     //foundUser && alert(`foundUser: ${foundUser.id}`);
     //contextFoundUser.self && alert(`context: ${contextFoundUser.self.id}`);
-    switch (window) {
+    switch (windowPlate) {
       case WINDOWS.PRE_CHAT :
         return (
           <FoundUserContext.Provider value={contextFoundUser}>
@@ -143,8 +145,8 @@ const App = () => {
   };
 
   const contextWindow = {
-    self: window,
-    setWindow: setWindow
+    self: windowPlate,
+    setWindowPlate: setWindowPlate
   };
 
   return (
