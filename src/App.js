@@ -6,7 +6,6 @@ import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
 import {Test} from "./components/dumb/Test";
-import Div100vh from 'react-div-100vh';
 
 
 import man from '../src/img/svg/man.svg';
