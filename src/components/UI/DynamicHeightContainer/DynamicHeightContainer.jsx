@@ -31,12 +31,6 @@ export const DynamicHeightContainer = props => {
         }
       }
     >
-      <div style={{position: 'absolute', top: 0, left: 0, zIndex: 1000, color: 'black'}}>
-        {`${window.innerHeight}`}
-      </div>
-      <div style={{position: 'absolute', top: 0, right: 0, zIndex: 1000, color: 'black'}}>
-        {`${dynamicHeightDelta}`}
-      </div>
       { props.children }
     </div>
   );

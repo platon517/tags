@@ -79,6 +79,7 @@ export const TagsCloud = props => {
                 placeholder={'tag'}
                 value={tagInput}
                 onChange={ changeTagInput }
+                disabled={ editTagUiVisible }
               />
               <div style={{opacity: tagInput.length !== 0 ? '1' : '0'}} className={styles.addTagControls}>
                 <button onClick={ deleteTag } className={`${styles.addTagButton} ${styles.delete}`}>delete</button>
