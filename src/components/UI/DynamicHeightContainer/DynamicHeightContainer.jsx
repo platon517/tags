@@ -7,15 +7,18 @@ export const DynamicHeightContainer = props => {
 
   const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
 
+  React.useEffect(() => {
+    heightChange();
+  }, []);
+
   const heightChange = () => {
     if (container.current) {
       const newDelta = Math.abs(container.current.getBoundingClientRect().top);
       if (dynamicHeightDelta !== newDelta) console.log('new height!');
       setDynamicHeightDelta(newDelta);
     }
+    setTimeout(heightChange, 100); // ios keyboard padding
   };
-
-  setTimeout(() => requestAnimationFrame(heightChange), 100); // ios keyboard padding
 
   return(
     <div
