@@ -21,7 +21,9 @@ export const UpperPlate = React.memo(props => {
       <BorderButton onClick={ backHandler } text={'Back'}/>
       <div className={styles.user}>
         <div className={styles.name}>{props.name}</div>
-        <div className={styles.status}>online</div>
+        {
+          null && <div className={styles.status}>protected</div>
+        }
       </div>
       <div className={styles.avatar}><SmallAvatar yours={ false } /></div>
     </div>
