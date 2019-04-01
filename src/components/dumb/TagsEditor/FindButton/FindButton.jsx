@@ -22,6 +22,7 @@ export const FindButton = props => {
   };
 
   const findChat = () => {
+    if ( !socket ) return alert('Connection failed');
     socket.emit('findChat', { user: user });
     contextWindow.setWindowPlate(WINDOWS.PRE_CHAT);
   };

@@ -49,6 +49,7 @@ const App = () => {
 
   React.useEffect(() => {
     setWindowPlate(WINDOWS.TAGS_EDITOR);
+    const avatarId = getRandomInt(0, avatars.length);
     const newSocket = io.connect(process.env.REACT_APP_API);
     if (newSocket) {
       newSocket.on('connect', () => {
@@ -58,7 +59,7 @@ const App = () => {
           ...user,
           id: newSocket.id,
           name: `User ${newSocket.id.substr(0, 5)}`,
-          avatar: getRandomInt(0, avatars.length)
+          avatar: avatarId
         });
         newSocket.on('noUsers', () => {
           setWindowPlate(WINDOWS.TAGS_EDITOR);
@@ -79,6 +80,12 @@ const App = () => {
           setFoundUser(null);
         });
         setSocket(newSocket);
+      });
+    } else {
+      setUser({
+        ...user,
+        name: 'Your Name',
+        avatar: avatarId
       });
     }
   }, []);
