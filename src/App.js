@@ -52,6 +52,13 @@ const App = () => {
     const avatarId = getRandomInt(0, avatars.length);
     const newSocket = io.connect(process.env.REACT_APP_API);
     if (newSocket) {
+      newSocket.on('connect_error', () => {
+        setUser({
+          ...user,
+          name: 'Your Name',
+          avatar: avatarId
+        });
+      });
       newSocket.on('connect', () => {
         windowPlate !== WINDOWS.TAGS_EDITOR && setWindowPlate(WINDOWS.TAGS_EDITOR);
         setFoundUser(null);
@@ -80,12 +87,6 @@ const App = () => {
           setFoundUser(null);
         });
         setSocket(newSocket);
-      });
-    } else {
-      setUser({
-        ...user,
-        name: 'Your Name',
-        avatar: avatarId
       });
     }
   }, []);
