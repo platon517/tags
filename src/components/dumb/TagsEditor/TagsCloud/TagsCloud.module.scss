@@ -49,6 +49,9 @@
     border-radius: 0.5em;
     box-sizing: border-box;
     font-size: 1em;
+    &:disabled{
+      opacity: 1;
+    }
   }
 }
 

@@ -18,7 +18,7 @@ export const TagsCloud = props => {
 
   const [editTagUiVisible, setEditTagUiVisible] = React.useState(false);
 
-  const changeTagInput = e => e.target.value.length < 30 && setTagInput(e.target.value);
+  const changeTagInput = e => e.target.value.length < 20 && setTagInput(e.target.value);
 
   const editTagUiShow = tag => {
     setTagInput(tag.name);
@@ -82,7 +82,12 @@ export const TagsCloud = props => {
                 disabled={ editTagUiVisible }
               />
               <div style={{opacity: tagInput.length !== 0 ? '1' : '0'}} className={styles.addTagControls}>
-                <button onClick={ deleteTag } className={`${styles.addTagButton} ${styles.delete}`}>delete</button>
+                {
+                  editTagUiVisible &&
+                  <button onClick={ deleteTag } className={`${styles.addTagButton} ${styles.delete}`}>
+                    delete
+                  </button>
+                }
                 { addTagUiVisible && <button onClick={ addNewTag } className={styles.addTagButton}>add</button> }
               </div>
             </div>
