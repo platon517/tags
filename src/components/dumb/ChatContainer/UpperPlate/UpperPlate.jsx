@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './UpperPlate.module.scss';
 import {SmallAvatar} from "../MessageContainer/SmallAvatar/SmallAvatar";
 import {BorderButton} from "../../../UI/BorderButton/BorderButton";
-import {SocketContext, WindowContext} from "../../../../App";
+import {CryptContext, SocketContext, WindowContext} from "../../../../App";
 import {WINDOWS} from "../../../../constants/constants";
 
 export const UpperPlate = React.memo(props => {
@@ -10,6 +10,8 @@ export const UpperPlate = React.memo(props => {
   const socket = React.useContext(SocketContext);
 
   const contextWindow = React.useContext(WindowContext);
+
+  const contextCrypt = React.useContext(CryptContext);
 
   const backHandler = () => {
     socket.emit('escapeChat');
@@ -22,7 +24,7 @@ export const UpperPlate = React.memo(props => {
       <div className={styles.user}>
         <div className={styles.name}>{props.name}</div>
         {
-          null && <div className={styles.status}>protected</div>
+          contextCrypt && <div className={styles.status}>protected</div>
         }
       </div>
       <div className={styles.avatar}><SmallAvatar yours={ false } /></div>
