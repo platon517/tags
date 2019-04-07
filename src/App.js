@@ -5,8 +5,7 @@ import {DynamicHeightContainer} from "./components/UI/DynamicHeightContainer/Dyn
 import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
-import {Test} from "./components/dumb/Test";
-
+import endcrypt from 'endcrypt';
 
 import man from '../src/img/svg/man.svg';
 import man_1 from '../src/img/svg/man-1.svg';
@@ -28,6 +27,8 @@ export const SocketContext = React.createContext(null);
 
 export const AvatarsContext = React.createContext(null);
 
+export const CryptContext = React.createContext(null);
+
 const avatars = [man, man_1, man_2, man_3, man_4, girl, girl_1, boy, boy_1];
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
@@ -47,11 +48,17 @@ const App = () => {
 
   const [socket, setSocket] = React.useState(null);
 
+  const [crypt, setCrypt] = React.useState(null);
+
   React.useEffect(() => {
     setWindowPlate(WINDOWS.TAGS_EDITOR);
     const avatarId = getRandomInt(0, avatars.length);
-    const newSocket = io.connect(process.env.REACT_APP_API);
+    const newSocket = io.connect(
+      process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_API_LOCAL : process.env.REACT_APP_API
+    );
     if (newSocket) {
+      setSocket(newSocket);
       newSocket.on('connect_error', () => {
         setUser({
           ...user,
@@ -80,13 +87,15 @@ const App = () => {
             tags: user.tags,
             avatar: user.avatar,
           });
+          setCrypt(new endcrypt.Endcrypt());
         });
         newSocket.on('endChat', event => {
           //event.log !== 'null' && alert(event.log);
           event.findNext ? setWindowPlate(WINDOWS.PRE_CHAT) : setWindowPlate(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
+          setCrypt(null);
+          newSocket.removeAllListeners('partnerIsReady');
         });
-        setSocket(newSocket);
       });
     }
   }, []);
@@ -159,15 +168,17 @@ const App = () => {
   return (
     <SocketContext.Provider value={socket}>
       <UserContext.Provider value={contextUser}>
-        <WindowContext.Provider value={ contextWindow }>
-          <DynamicHeightContainer>
-            <AvatarsContext.Provider value={avatars}>
-              {
-                renderSwitcher()
-              }
-            </AvatarsContext.Provider>
-          </DynamicHeightContainer>
-        </WindowContext.Provider>
+        <CryptContext.Provider value={crypt}>
+          <WindowContext.Provider value={ contextWindow }>
+            <DynamicHeightContainer>
+              <AvatarsContext.Provider value={avatars}>
+                {
+                  renderSwitcher()
+                }
+              </AvatarsContext.Provider>
+            </DynamicHeightContainer>
+          </WindowContext.Provider>
+        </CryptContext.Provider>
       </UserContext.Provider>
     </SocketContext.Provider>
   );

@@ -3,13 +3,15 @@ import styles from './ChatContainer.module.scss';
 import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
-import {FoundUserContext, SocketContext, UserContext} from "../../../App";
+import {CryptContext, FoundUserContext, SocketContext, UserContext} from "../../../App";
 
 export const ChatContainer = React.memo(props => {
 
   const socket = React.useContext(SocketContext);
 
   const contextFoundUser = React.useContext(FoundUserContext);
+
+  const contextCrypt = React.useContext(CryptContext);
 
   const foundUser = contextFoundUser.self;
 
@@ -44,17 +46,24 @@ export const ChatContainer = React.memo(props => {
     socket.emit('startChat', { pair: foundUser });
     socket.on('message', getMessage);
     socket.on('partnerIsReady', () => {
-      console.log('partnerIsReady');
       setIsWaiting(false);
+      contextCrypt.createKeys();
+      contextCrypt.sendHandshake(publicKey => {
+        socket.emit('sendPublicKey', {pair: foundUser, publicKey});
+      });
     });
-  }, [socket]);
+    socket.on('getPublicKey', publicKey => {
+      contextCrypt.receiveHandshake(publicKey);
+    });
+  }, [socket, foundUser.id]);
 
   const getMessage = msg => {
+    console.log(`encrypted message: ${msg.text}`);
     setMessages(
       messages => [...messages, {
         id: msg.id,
         senderId: msg.senderId,
-        text: msg.text,
+        text: contextCrypt.decrypt(JSON.parse(msg.text)),
         attachments: []
       }]
     );
@@ -74,7 +83,7 @@ export const ChatContainer = React.memo(props => {
       senderId: user.id,
       pair: foundUser,
       message: {
-        text: text
+        text: JSON.stringify(contextCrypt.encrypt(text))
       },
     });
   };
