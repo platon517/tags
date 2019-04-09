@@ -23,6 +23,8 @@ export const ChatContainer = React.memo(props => {
 
   const [messages, setMessages] = React.useState([]);
 
+  const [sentHandshake, setSentHandshake] = React.useState(false);
+
   /*
   const [messages, setMessages] = React.useState(
     [
@@ -45,17 +47,32 @@ export const ChatContainer = React.memo(props => {
   React.useEffect(() => {
     socket.emit('startChat', { pair: foundUser });
     socket.on('message', getMessage);
-    socket.on('partnerIsReady', () => {
-      setIsWaiting(false);
-      contextCrypt.createKeys();
-      contextCrypt.sendHandshake(publicKey => {
-        socket.emit('sendPublicKey', {pair: foundUser, publicKey});
-      });
-    });
-    socket.on('getPublicKey', publicKey => {
-      contextCrypt.receiveHandshake(publicKey);
-    });
   }, [socket, foundUser.id]);
+
+  React.useEffect(() => {
+    socket.removeAllListeners('partnerIsReady');
+    socket.removeAllListeners('getPublicKey');
+    socket.on('partnerIsReady', partnerIsReady);
+    socket.on('getPublicKey', getPublicKey);
+  }, [sentHandshake]);
+
+  const getPublicKey = alienPublicKey => {
+    contextCrypt.receiveHandshake(alienPublicKey);
+    !sentHandshake && sendHandShake();
+  };
+
+  const partnerIsReady = () => {
+    setIsWaiting(false);
+    contextCrypt.createKeys();
+    !sentHandshake && sendHandShake();
+  };
+
+  const sendHandShake = () => {
+    setSentHandshake(true);
+    contextCrypt.sendHandshake(publicKey => {
+      socket.emit('sendPublicKey', {pair: foundUser, publicKey});
+    });
+  };
 
   const getMessage = msg => {
     console.log(`encrypted message: ${msg.text}`);
