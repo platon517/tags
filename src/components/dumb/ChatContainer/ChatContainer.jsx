@@ -4,6 +4,7 @@ import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
 import {CryptContext, FoundUserContext, SocketContext, UserContext} from "../../../App";
+import {VideoChat} from "../VideoChat/VideoChat";
 
 export const ChatContainer = React.memo(props => {
 
@@ -107,6 +108,7 @@ export const ChatContainer = React.memo(props => {
 
   return(
     <div className={styles.container}>
+      { !isWaiting && <VideoChat/> }
       <UpperPlate name={foundUser.name}/>
       { isWaiting && <span className={styles.waitLine}>Waiting for partner...</span> }
       <MessagesZone messages={messages}/>
