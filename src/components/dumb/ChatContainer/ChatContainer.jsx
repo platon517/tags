@@ -26,6 +26,8 @@ export const ChatContainer = React.memo(props => {
 
   const [sentHandshake, setSentHandshake] = React.useState(false);
 
+  const [videoCall, setVideoCall] = React.useState(false);
+
   /*
   const [messages, setMessages] = React.useState(
     [
@@ -106,9 +108,14 @@ export const ChatContainer = React.memo(props => {
     });
   };
 
+  const startVideoCall = () => setVideoCall(true);
+  const endVideoCall = () => setVideoCall(false);
+
   return(
     <div className={styles.container}>
-      { !isWaiting && <VideoChat/> }
+      <div>is host: {JSON.stringify(user.id > foundUser.id)}</div>
+      <button onClick={startVideoCall}>video call</button>
+      { videoCall && <VideoChat endVideoCall={endVideoCall}/> }
       <UpperPlate name={foundUser.name}/>
       { isWaiting && <span className={styles.waitLine}>Waiting for partner...</span> }
       <MessagesZone messages={messages}/>

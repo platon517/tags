@@ -1,6 +1,7 @@
 import React from 'react';
 import Peer from 'simple-peer';
 import {FoundUserContext, SocketContext, UserContext} from "../../../App";
+import styles from './VideoChat.module.scss';
 
 export const VideoChat = React.memo(props => {
 
@@ -18,6 +19,8 @@ export const VideoChat = React.memo(props => {
     return () => {
       peer && peer.destroy();
       setPeer(null);
+      socket.removeAllListeners('getVideoResponse');
+      console.log('test');
     }
   }, []);
 
@@ -61,8 +64,11 @@ export const VideoChat = React.memo(props => {
   };
 
   return(
-    <>
+    <div className={styles.container}>
       <video src={videoSrc} autoPlay={true}/>
-    </>
+      <div className={styles.controls}>
+        <button onClick={props.endVideoCall} className={styles.endCallButton}>End call</button>
+      </div>
+    </div>
   )
 });

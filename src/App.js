@@ -95,7 +95,6 @@ const App = () => {
           setFoundUser(null);
           setCrypt(null);
           newSocket.removeAllListeners('partnerIsReady');
-          newSocket.removeAllListeners('getVideoResponse');
         });
       });
     }
