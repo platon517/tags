@@ -4,6 +4,7 @@ import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
 import {CryptContext, FoundUserContext, SocketContext, UserContext} from "../../../App";
+import {VideoChat} from "../VideoChat/VideoChat";
 
 export const ChatContainer = React.memo(props => {
 
@@ -24,6 +25,8 @@ export const ChatContainer = React.memo(props => {
   const [messages, setMessages] = React.useState([]);
 
   const [sentHandshake, setSentHandshake] = React.useState(false);
+
+  const [videoCall, setVideoCall] = React.useState(false);
 
   /*
   const [messages, setMessages] = React.useState(
@@ -105,8 +108,14 @@ export const ChatContainer = React.memo(props => {
     });
   };
 
+  const startVideoCall = () => setVideoCall(true);
+  const endVideoCall = () => setVideoCall(false);
+
   return(
     <div className={styles.container}>
+      <div>is host: {JSON.stringify(user.id > foundUser.id)}</div>
+      <button onClick={startVideoCall}>video call</button>
+      { videoCall && <VideoChat endVideoCall={endVideoCall}/> }
       <UpperPlate name={foundUser.name}/>
       { isWaiting && <span className={styles.waitLine}>Waiting for partner...</span> }
       <MessagesZone messages={messages}/>
