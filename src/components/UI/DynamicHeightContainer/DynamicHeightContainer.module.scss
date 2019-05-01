@@ -3,3 +3,23 @@
   flex-direction: column;
   position: relative;
 }
+
+.useVertical{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  white-space: nowrap;
+  &:before{
+    width: 10em;
+    height: 10em;
+    content: '';
+    background-image: url("../../../img/svg/iphone.svg");
+    background-size: 100%;
+  }
+}

@@ -1,5 +1,6 @@
 import React  from 'react';
 import {PreChatPlate} from "./components/dumb/PreChatPlate/PreChatPlate";
+import {NoConnection} from "./components/dumb/NoConnection/NoConnection";
 import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
 import {DynamicHeightContainer} from "./components/UI/DynamicHeightContainer/DynamicHeightContainer";
 import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
@@ -36,6 +37,7 @@ const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min
 const App = () => {
 
   const [windowPlate, setWindowPlate] = React.useState('');
+  const [noConnection, setNoConnection] = React.useState(true);
 
   const [user, setUser] = React.useState({
     id: null,
@@ -60,6 +62,7 @@ const App = () => {
     if (newSocket) {
       setSocket(newSocket);
       newSocket.on('connect_error', () => {
+        setNoConnection(true);
         setUser({
           ...user,
           name: 'Your Name',
@@ -68,6 +71,7 @@ const App = () => {
       });
       newSocket.on('connect', () => {
         windowPlate !== WINDOWS.TAGS_EDITOR && setWindowPlate(WINDOWS.TAGS_EDITOR);
+        setNoConnection(false);
         setFoundUser(null);
         setUser({
           ...user,
@@ -172,6 +176,7 @@ const App = () => {
           <WindowContext.Provider value={ contextWindow }>
             <DynamicHeightContainer>
               <AvatarsContext.Provider value={avatars}>
+                {noConnection && <NoConnection/>}
                 {
                   renderSwitcher()
                 }

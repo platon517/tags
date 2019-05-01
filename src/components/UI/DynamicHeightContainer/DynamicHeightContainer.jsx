@@ -6,6 +6,7 @@ export const DynamicHeightContainer = props => {
   const container = React.useRef(null);
 
   const [dynamicHeightDelta, setDynamicHeightDelta] = React.useState(0);
+  const [isVertical, setIsVertical] = React.useState(window.innerHeight > window.innerWidth);
 
   React.useEffect(() => {
     heightChange();
@@ -16,8 +17,10 @@ export const DynamicHeightContainer = props => {
       const newDelta = Math.abs(container.current.getBoundingClientRect().top);
       if (dynamicHeightDelta !== newDelta) console.log('new height!');
       setDynamicHeightDelta(newDelta);
+      setIsVertical(window.innerHeight > window.innerWidth);
     }
-    setTimeout(heightChange, 100); // ios keyboard padding
+    setTimeout(heightChange, 100);
+    // Ios keyboard is moving the entire window with keyboard height. To pose things right, I used this function.
   };
 
   return(
@@ -31,7 +34,10 @@ export const DynamicHeightContainer = props => {
         }
       }
     >
-      { props.children }
+      {!isVertical && <div className={styles.useVertical}>
+        <p>Use the <b>mobile device</b> with <b>vertical orientation</b> to open this app</p>
+      </div>}
+      {props.children }
     </div>
   );
 };
