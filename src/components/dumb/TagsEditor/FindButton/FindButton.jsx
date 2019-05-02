@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './FindButton.module.scss';
-import {SocketContext, UserContext, WindowContext} from "../../../../App";
+import {UserContext, WindowContext} from "../../../../App";
 import {WINDOWS} from "../../../../constants/constants";
+import {socket} from "../../../../App";
 
 export const FindButton = props => {
 
@@ -10,8 +11,6 @@ export const FindButton = props => {
   const contextUser = React.useContext(UserContext);
 
   const user = contextUser.self;
-
-  const socket = React.useContext(SocketContext);
 
   const [touched, setTouched] = React.useState(false);
 

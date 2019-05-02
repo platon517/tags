@@ -2,12 +2,11 @@ import React from 'react';
 import styles from './UpperPlate.module.scss';
 import {SmallAvatar} from "../MessageContainer/SmallAvatar/SmallAvatar";
 import {BorderButton} from "../../../UI/BorderButton/BorderButton";
-import {CryptContext, SocketContext, WindowContext} from "../../../../App";
+import {CryptContext, WindowContext} from "../../../../App";
 import {WINDOWS} from "../../../../constants/constants";
+import {socket} from "../../../../App";
 
 export const UpperPlate = React.memo(props => {
-
-  const socket = React.useContext(SocketContext);
 
   const contextWindow = React.useContext(WindowContext);
 

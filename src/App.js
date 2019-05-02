@@ -24,8 +24,6 @@ export const FoundUserContext = React.createContext({});
 
 export const WindowContext = React.createContext('');
 
-export const SocketContext = React.createContext(null);
-
 export const AvatarsContext = React.createContext(null);
 
 export const CryptContext = React.createContext(null);
@@ -33,6 +31,11 @@ export const CryptContext = React.createContext(null);
 const avatars = [man, man_1, man_2, man_3, man_4, girl, girl_1, boy, boy_1];
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+export const socket = io.connect(
+  process.env.NODE_ENV === 'development'
+    ? process.env.REACT_APP_API_LOCAL : process.env.REACT_APP_API
+);
 
 const App = () => {
 
@@ -48,20 +51,13 @@ const App = () => {
 
   const [foundUser, setFoundUser] = React.useState(null);
 
-  const [socket, setSocket] = React.useState(null);
-
   const [crypt, setCrypt] = React.useState(null);
 
   React.useEffect(() => {
     setWindowPlate(WINDOWS.TAGS_EDITOR);
     const avatarId = getRandomInt(0, avatars.length);
-    const newSocket = io.connect(
-      process.env.NODE_ENV === 'development'
-        ? process.env.REACT_APP_API_LOCAL : process.env.REACT_APP_API
-    );
-    if (newSocket) {
-      setSocket(newSocket);
-      newSocket.on('connect_error', () => {
+    if (socket) {
+      socket.on('connect_error', () => {
         setNoConnection(true);
         setUser({
           ...user,
@@ -69,21 +65,21 @@ const App = () => {
           avatar: avatarId
         });
       });
-      newSocket.on('connect', () => {
+      socket.on('connect', () => {
         windowPlate !== WINDOWS.TAGS_EDITOR && setWindowPlate(WINDOWS.TAGS_EDITOR);
         setNoConnection(false);
         setFoundUser(null);
         setUser({
           ...user,
-          id: newSocket.id,
-          name: `User ${newSocket.id.substr(0, 5)}`,
+          id: socket.id,
+          name: `User ${socket.id.substr(0, 5)}`,
           avatar: avatarId
         });
-        newSocket.on('noUsers', () => {
+        socket.on('noUsers', () => {
           setWindowPlate(WINDOWS.TAGS_EDITOR);
           alert('No users found.');
         });
-        newSocket.on('userFound', res => {
+        socket.on('userFound', res => {
           const user = res.user;
           setFoundUser({
             id: user.id,
@@ -93,12 +89,12 @@ const App = () => {
           });
           setCrypt(new endcrypt.Endcrypt());
         });
-        newSocket.on('endChat', event => {
+        socket.on('endChat', event => {
           //event.log !== 'null' && alert(event.log);
           event.findNext ? setWindowPlate(WINDOWS.PRE_CHAT) : setWindowPlate(WINDOWS.TAGS_EDITOR);
           setFoundUser(null);
           setCrypt(null);
-          newSocket.removeAllListeners('partnerIsReady');
+          socket.removeAllListeners('partnerIsReady');
         });
       });
     }
@@ -170,22 +166,20 @@ const App = () => {
   };
 
   return (
-    <SocketContext.Provider value={socket}>
-      <UserContext.Provider value={contextUser}>
-        <CryptContext.Provider value={crypt}>
-          <WindowContext.Provider value={ contextWindow }>
-            <DynamicHeightContainer>
-              <AvatarsContext.Provider value={avatars}>
-                {noConnection && <NoConnection/>}
-                {
-                  renderSwitcher()
-                }
-              </AvatarsContext.Provider>
-            </DynamicHeightContainer>
-          </WindowContext.Provider>
-        </CryptContext.Provider>
-      </UserContext.Provider>
-    </SocketContext.Provider>
+    <UserContext.Provider value={contextUser}>
+      <CryptContext.Provider value={crypt}>
+        <WindowContext.Provider value={ contextWindow }>
+          <DynamicHeightContainer>
+            <AvatarsContext.Provider value={avatars}>
+              {noConnection && <NoConnection/>}
+              {
+                renderSwitcher()
+              }
+            </AvatarsContext.Provider>
+          </DynamicHeightContainer>
+        </WindowContext.Provider>
+      </CryptContext.Provider>
+    </UserContext.Provider>
   );
 };
 

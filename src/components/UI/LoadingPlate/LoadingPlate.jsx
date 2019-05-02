@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './LoadingPlate.module.scss';
-import {SocketContext, WindowContext} from "../../../App";
+import {socket, WindowContext} from "../../../App";
 import {WINDOWS} from "../../../constants/constants";
 import {BorderButton} from "../../UI/BorderButton/BorderButton";
 
 export const LoadingPlate = () => {
-
-  const socket = React.useContext(SocketContext);
 
   const contextWindow = React.useContext(WindowContext);
 

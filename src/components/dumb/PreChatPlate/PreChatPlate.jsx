@@ -5,12 +5,11 @@ import {AvatarCircle} from "./AvatarCircle/AvatarCircle";
 import {ButtonsRow} from "./ButtonsRow/ButtonsRow";
 import {BorderButton} from "../../UI/BorderButton/BorderButton";
 import {WINDOWS} from "../../../constants/constants";
-import {FoundUserContext, SocketContext, WindowContext} from "../../../App";
+import {FoundUserContext, WindowContext} from "../../../App";
 import {LoadingPlate} from "../../UI/LoadingPlate/LoadingPlate";
+import {socket} from "../../../App";
 
 export const PreChatPlate = props => {
-
-  const socket = React.useContext(SocketContext);
 
   const contextWindow = React.useContext(WindowContext);
 

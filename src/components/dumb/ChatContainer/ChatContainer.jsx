@@ -3,11 +3,10 @@ import styles from './ChatContainer.module.scss';
 import {MessagesZone} from "./MessagesZone/MessagesZone";
 import {InputZone} from "./InputZone/InputZone";
 import {UpperPlate} from "./UpperPlate/UpperPlate";
-import {CryptContext, FoundUserContext, SocketContext, UserContext} from "../../../App";
+import {CryptContext, FoundUserContext, UserContext} from "../../../App";
+import {socket} from "../../../App";
 
 export const ChatContainer = React.memo(props => {
-
-  const socket = React.useContext(SocketContext);
 
   const contextFoundUser = React.useContext(FoundUserContext);
 
