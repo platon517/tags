@@ -3,6 +3,7 @@ import {PreChatPlate} from "./components/dumb/PreChatPlate/PreChatPlate";
 import {NoConnection} from "./components/dumb/NoConnection/NoConnection";
 import {ChatContainer} from "./components/dumb/ChatContainer/ChatContainer";
 import {DynamicHeightContainer} from "./components/UI/DynamicHeightContainer/DynamicHeightContainer";
+import {InitLoadingPlate} from "./components/dumb/InitLoadingPlate/InitLoadingPlate";
 import {TagsEditor} from "./components/dumb/TagsEditor/TagsEditor";
 import {WINDOWS} from "./constants/constants";
 import io from 'socket.io-client'
@@ -40,7 +41,8 @@ export const socket = io.connect(
 const App = () => {
 
   const [windowPlate, setWindowPlate] = React.useState('');
-  const [noConnection, setNoConnection] = React.useState(true);
+  const [noConnection, setNoConnection] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const [user, setUser] = React.useState({
     id: null,
@@ -59,6 +61,7 @@ const App = () => {
     if (socket) {
       socket.on('connect_error', () => {
         setNoConnection(true);
+        setIsLoading(false);
         setUser({
           ...user,
           name: 'Your Name',
@@ -68,6 +71,7 @@ const App = () => {
       socket.on('connect', () => {
         windowPlate !== WINDOWS.TAGS_EDITOR && setWindowPlate(WINDOWS.TAGS_EDITOR);
         setNoConnection(false);
+        setIsLoading(false);
         setFoundUser(null);
         setUser({
           ...user,
@@ -172,6 +176,7 @@ const App = () => {
           <DynamicHeightContainer>
             <AvatarsContext.Provider value={avatars}>
               {noConnection && <NoConnection/>}
+              {isLoading && <InitLoadingPlate/>}
               {
                 renderSwitcher()
               }
