@@ -6,12 +6,12 @@ Simple PWA chat app, where you can find users with similar interests (tags).
 
 [Live on Heroku](https://tags-chat.herokuapp.com/)
 
-*Tell about yourself*
-![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen1.png)
-*Find user with common interests*
-![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen2.png)
-*Happy chatting!*
-![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen3.png)
+*Tell about yourself* . 
+![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen1.png | width=100)
+*Find user with common interests* . 
+![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen2.png | width=100)
+*Happy chatting!* . 
+![Screenshot](https://raw.githubusercontent.com/platon517/tags/master/readme_images/screen3.png | width=100)
 
 ### Created with:
 
